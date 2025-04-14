@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Yourself</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+          <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="flex lg:flex-1">
+              <a href="/" class="-m-1.5 p-1.5">
+                <span class="sr-only text-zinc-950">Your Company</span>
+                <img class="h-8" src="https://i.ibb.co/9kFqxZMM/Your-paragraph-text-removebg-preview.png" alt="">
+              </a>
+            </div>
+            <div class="flex lg:hidden">
+              <button onclick="toggleMenu()" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                <span class="sr-only">Open main menu</span>
+                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+              <a href="/templates" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">Templates</a>
+              <a href="#" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">Contact</a>
+              <a href="/about" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">About</a>
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+              <div class="h-8 w-8 rounded-full justify-center items-center flex hover:border-2 hover:border-purple-600 cursor-pointer p-2">
+                  <span class="text-xl text-purple-600"><img class="rounded-full" src="/images/userImages/<%= user.userImage %>" alt=""></span>
+                </div>
+              <a href="/logout" class="text-sm/6 font-semibold text-gray-900">Log out <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </nav>
+          <div class="px-5">
+
+             <div class="flex justify-between">
+              <span class="font-medium text-base md:text-lg ">Hello</span>
+              <h1 class="font-normal text-base md:text-lg "> <%= user.name %> 😊</h1>
+              </div> 
+
+              <div class="p-10 w-full flex justify-center flex-col items-center gap-5">
+                <div class="flex justify-center items-center flex-wrap overflow-hidden p-3 text-center gap-5">
+                  <img class="h-44 w-44 md:h-52 md:w-52 rounded-full object-cover transition-transform duration-300 hover:scale-105 hover:shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="/images/userImages/<%= user.userImage %>">
+                  <div class="flex justify-center flex-col items-center gap-2">
+                    <h1 class="text-2xl text-zinc-950"><%= user.username %></h1>
+                  <h2 class="text-zinc-500 text-xl"><%= user.email %></h2>
+                  <a href="/edit/<%= user.username %>"><h1 class="text-purple-400 hover:text-purple-600 cursor-pointer">edit profile</h1></a>
+                  </div>
+          </div> 
+                <form action="/upload" method="POST" enctype="multipart/form-data" class="flex bg-purple-100 p-5 rounded-lg flex-col justify-center items-center gap-6">
+                  <div class="relative group">
+                      <label for="fileInput"
+                          class="relative z-40 cursor-pointer group-hover:translate-x-2 group-hover:shadow-lg group-hover:-translate-y-2 transition-all duration-300 bg-purple-600 flex items-center justify-center h-14 w-14 mx-auto rounded-xl">
+                          <svg class="h-6 w-6 text-white/80" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                              stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                              <path d="M7 9l5 -5l5 5"></path>
+                              <path d="M12 4l0 12"></path>
+                          </svg>
+                      </label>
+              
+                      <div
+                          class="absolute border opacity-0 group-hover:opacity-80 transition-all duration-300 border-dashed border-purple-400 inset-0 z-30 bg-transparent flex items-center justify-center h-14 w-14 mx-auto rounded-xl">
+                      </div>
+                  </div>
+                  <input type="file" id="fileInput" required name="image" class="hidden" accept="image/*" onchange="document.getElementById('fileName').value = this.value">
+                  <h1 class="font-semibold text-base md:text-lg text-purple-600">Change Profile Image</h1>
+                  <output id="fileName" class="text-sm text-gray-700 mt-2">No file selected</output>
+                  <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                      Upload Image
+                  </button>
+              </form>
+              
+              </div>
+              <div class="flex justify-end">
+                <div onclick="deleteAccountPopUp()">
+                <h1 class=" cursor-pointer transition hover:ease-in hover:duration-300 text-red-400 font-bold hover:underline hover:text-red-500">Delete Account</h1>
+                </div>
+              </div>
+              <div id="accountDeletePopUp" class="absolute hidden top-[30%] transition ease-in-out duration-300 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+                  <div
+                    role="alert"
+                    class="mx-auto max-w-lg rounded-lg border border-stone bg-red-200 p-4 shadow-lg sm:p-6 lg:p-8"
+                  >
+                    <div class="flex items-center gap-4">
+                      <span class="shrink-0 rounded-full bg-red-400 p-2 text-white">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          class="h-4 w-4"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    
+                      <p class="font-medium sm:text-lg text-red-600">Delete Account!</p>
+                    </div>
+                  
+                    <p class="mt-4 text-gray-600">
+                      Are you sure you want to delete your account? This action is irreversible, and all your data will be permanently lost.
+                    </p>
+                  
+                    <div class="mt-6 sm:fl flex ex sm:gap-4 justify-center">
+                      <a
+                        href="/delete/<%=user.username%>"
+                        class="inline-block w-full rounded-lg bg-red-500 px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto"
+                      >
+                        Yes
+                      </a>
+                    
+                      <a onclick="deleteAccountPopUp()"
+                        href="/profile/<%=user.username%>"
+                        class="mt-2 inline-block w-full rounded-lg bg-stone-300 px-5 py-3 text-center text-sm font-semibold text-gray-800 sm:mt-0 sm:w-auto"
+                      >
+                        No
+                      </a>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Mobile menu, show/hide based on menu open state. -->
+          <div class="hidden" role="dialog" aria-modal="true" id="mobileMenu">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-50"></div>
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 " id="mobileMenu">
+              <div class="flex items-center justify-between ">
+                <a href="#" class="-m-1.5 p-1.5">
+                  <span class="sr-only">Your Company</span>
+                  <img class="h-8 w-auto" src="https://i.ibb.co/9kFqxZMM/Your-paragraph-text-removebg-preview.png" alt="">
+                </a>
+                <button onclick="toggleMenu()" type="button" class="-m-2.5  rounded-md p-2.5 text-gray-700">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-6 flow-root" >
+                <div class="space-y-2 py-6">
+                  <a href="/templates" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">Templates</a>
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">Contact</a>
+                  <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">About</a>
+                </div>
+                  <div class="py-6">
+                    <div class="h-8 w-8 rounded-full justify-center items-center flex hover:border-2 hover:border-purple-600 cursor-pointer p-2">
+                      <span class="text-xl text-purple-600"><i class="ri-user-fill"></i></span>
+                    </div>
+                    <a href="/logout" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log out</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+
+
+      
+      
+<script>
+ function deleteAccountPopUp() {
+    let accountDeletePopUp = document.getElementById('accountDeletePopUp');
+    if (accountDeletePopUp.style.display === "none" || accountDeletePopUp.style.display === "") {
+        accountDeletePopUp.style.display = "block";
+    } else {
+        accountDeletePopUp.style.display = "none";
+    }
+}
+
+  function toggleMenu() {
+    let menu = document.getElementById("mobileMenu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
+</script>
+</body>
+</html>

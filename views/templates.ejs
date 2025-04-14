@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Yourself</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+          <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="flex lg:flex-1">
+              <a href="/" class="-m-1.5 p-1.5">
+                <span class="sr-only text-zinc-950">Your Company</span>
+                <img class="h-8" src="https://i.ibb.co/9kFqxZMM/Your-paragraph-text-removebg-preview.png" alt="">
+              </a>
+            </div>
+            <div class="flex lg:hidden">
+              <button onclick="toggleMenu()" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                <span class="sr-only">Open main menu</span>
+                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+              <a href="#" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600 underline">Templates</a>
+              <a href="#" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">Contact</a>
+              <a href="/about" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">About</a>
+              <% if (user) { %>
+                <a href="/profile/<%=user.username%>" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">Profile</a>
+              <% } else { %>
+                <a href="/login" class="text-sm/6 hover:scale-110 ease-out transition-transform duration-200 font-semibold text-purple-600">Profile</a>
+              <% } %></div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+              <div class="h-8 w-8 rounded-full justify-center items-center flex hover:border-2 hover:border-purple-600 cursor-pointer p-2">
+                <% if (user) { %>
+                  <a href="/profile/<%=user.username%>">
+                  <span class="text-xl text-purple-600"><img class="rounded-full" src="/images/userImages/<%= user.userImage %>" alt=""></span>
+                  </a>
+                <% } else { %>
+                  <a href="/login">
+                    <span class="text-2xl text-purple-600"><i class="ri-user-fill"></i></span>
+                  </a>
+                  <% } %>
+                </div>
+              <% if (user) { %>
+                <a href="/logout" class="text-sm/6 font-semibold text-gray-900 hover:scale-110 ease-out transition-transform duration-200">Log out <span aria-hidden="true">&rarr;</span></a>
+                  <% } else { %>
+                <a href="/login" class="text-sm/6 font-semibold text-gray-900 hover:scale-110 ease-out transition-transform duration-200">Log in <span aria-hidden="true">&rarr;</span></a>
+                  <% } %></div>
+          </nav>
+          <div class="px-5">
+
+            <div class="flex flex-col">
+              <div class="flex flex-wrap gap-10 p-5">
+
+                <% templates.forEach(template => { %>
+                  <div class="h-96 relative w-80 bg-transparent border-[1px] border-purple-500 cursor-pointer hover:scale-105 ease-in-out transition duration-300">
+                    <h1 class="<%= template.color %>/60 px-1 font-bold absolute bottom-0 right-0"><%= template.demand %></h1>
+                    <a href="/customize/<%= template.type + template.id  %>">
+                      <img class="object-contain h-full w-full" src="<%= template.image %>" alt="<%= template.name %>">
+                    </a>
+                    <h1 class="text-2xl text-xl text-center font-semibold text-purple-600"><%= template.name %></h1>
+                  </div>
+              <% }); %>
+          </div>
+               
+          <div class="flex justify-center items-center mt-16 text-center p-5 flex-col">
+            <h1 class="text-base text-gray-500">If you have more <span class="text-base font-semibold text-gray-700">templates</span> then email me on <span><a class="text-base font-semibold text-gray-700 hover:text-purple-600" href="https://mail.google.com/mail/?view=cm&fs=1&to=dpy9572@gmail.com" target="_blank">dpy9572@gmil.com</a></span> </h1>
+            <h1 class="text-base text-gray-500">OR</h1>
+            <h1 class="text-base text-gray-500">Upload templates and name/description</h1>
+            <form action="">
+              <div class="flex gap-3 justify-center items-center flex-wrap ">
+                <input type="text" placeholder="Name/Description" class="border-2 focus:border-purple-600 outline-none border-purple-400 p-2 rounded-lg">
+              <input type="text" placeholder="Image URL" class="border-2 border-purple-400  focus:border-purple-600 outline-none p-2 rounded-lg">
+              <input class="bg-purple-400 text-white text-center p-2  hover:bg-purple-600 outline-none rounded-lg" value="Submit">
+              </div>
+            </form>
+          </div>
+          <!-- Mobile menu, show/hide based on menu open state. -->
+          <div class="hidden" role="dialog" aria-modal="true" id="mobileMenu">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-50"></div>
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 " id="mobileMenu">
+              <div class="flex items-center justify-between ">
+                <a href="#" class="-m-1.5 p-1.5">
+                  <span class="sr-only">Your Company</span>
+                  <img class="h-8 w-auto" src="https://i.ibb.co/9kFqxZMM/Your-paragraph-text-removebg-preview.png" alt="">
+                </a>
+                <button onclick="toggleMenu()" type="button" class="-m-2.5  rounded-md p-2.5 text-gray-700">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-6 flow-root" >
+                <div class="space-y-2 py-6">
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">Templates</a>
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">Contact</a>
+                  <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">About</a>
+                  <% if (user) { %>
+                    <a href="/profile/<%=user.username%>" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">Profile</a>
+                  <% } else { %>
+                    <a href="/login" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-purple-600 hover:bg-gray-200">Profile</a>
+                  <% } %></div>
+                  <div class="py-6">
+                    <div class="h-8 w-8 rounded-full justify-center items-center flex hover:border-2 hover:border-purple-600 cursor-pointer p-2">
+                      <% if (user) { %>
+                        <a href="/profile/<%=user.username%>">
+                        <span class="text-xl text-purple-600"><img class="rounded-full" src="/images/userImages/<%= user.userImage %>" alt=""></span>
+                        </a>
+                      <% } else { %>
+                        <a href="/login">
+                          <span class="text-2xl text-purple-600"><i class="ri-user-fill"></i></span>
+                        </a>
+                        <% } %>
+                      </div>
+                    <% if (user) { %>
+                      <a href="/logout" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log out</a>
+                      <% } else { %>
+                      <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</a>
+                      <% } %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+      
+<script src="javasript/script.js"></script>
+</body>
+</html>

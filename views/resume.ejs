@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - <%= createResume.name %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @media print {
+            body {
+                width: 794px;
+                height: 1123px;
+                margin: 0 auto;
+                padding: 20px;
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-200 p-8">
+    <div id="resume" class="max-w-4xl mx-auto bg-gray-100 p-8 ">
+        <!-- Header -->
+        <div class="flex items-center border-b-4 border-gray-400 pb-6 mb-6">
+            <div class="w-3/4">
+                <h1 class="text-3xl font-bold"><%= createResume.name %></h1>
+                <p class="text-lg">Email: <a href="mailto:<%= createResume.email %>" class="text-blue-600"><%= createResume.email %></a></p>
+                <p class="text-lg">Mobile: <%= createResume.mobile %></p>
+                <p class="text-lg">LinkedIn: <a href="<%= createResume.linkedIn %>" class="text-blue-600"><%= createResume.linkedIn %></a></p>
+                <p class="text-lg">Portfolio: <a href="<%= createResume.website %>" class="text-blue-600"><%= createResume.website %></a></p>
+            </div>
+            <div class="w-1/4">
+                <img src="/images/resumeImages/<%= createResume.image %>" alt="Profile Image" class="w-28 h-32 ">
+            </div>
+        </div>
+
+        <!-- Objective -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-semibold border-b-4 border-gray-400 pb-2">Objective</h2>
+            <p class="text-gray-700 text-lg leading-relaxed"><%= createResume.objectives %></p>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-semibold border-b-4 border-gray-400 pb-2">Skills</h2>
+            <ul class="list-disc pl-6 text-gray-700 text-lg leading-relaxed">
+                <% if (createResume.skills) { %>
+                    <% if (createResume.skills.frontend) { %> <li>Frontend: <%= createResume.skills.frontend %></li> <% } %>
+                    <% if (createResume.skills.backend) { %> <li>Backend: <%= createResume.skills.backend %></li> <% } %>
+                    <% if (createResume.skills.languages) { %>
+                        <li>Languages: 
+                            <% if (Array.isArray(createResume.skills.languages)) { %>
+                                <%= createResume.skills.languages.join(', ') %>
+                            <% } else { %>
+                                <%= createResume.skills.languages %>
+                            <% } %>
+                        </li>
+                    <% } %>
+                    <% if (createResume.skills.other) { %> <li>Other: <%= createResume.skills.other %></li> <% } %>
+                <% } else { %>
+                    <li>No skills available</li>
+                <% } %>
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-semibold border-b-4 border-gray-400 pb-2">Education</h2>
+            <% if (createResume.graduation) { %>
+                <p class="text-lg leading-relaxed"><strong>Graduation:</strong> <%= createResume.graduation.university %> (<%= createResume.graduation.year %>) - <%= createResume.graduation.score %></p>
+            <% } %>
+            <% if (createResume.intermediate) { %>
+                <p class="text-lg leading-relaxed"><strong>12th:</strong> <%= createResume.intermediate.university %> (<%= createResume.intermediate.year %>) - <%= createResume.intermediate.score %></p>
+            <% } %>
+        </div>
+
+        <!-- Certifications -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-semibold border-b-4 border-gray-400 pb-2">Trainings or Certifications</h2>
+            <% if (createResume.certifications && createResume.certifications.length > 0) { %>
+                <ul class="list-disc pl-6 text-gray-700 text-lg leading-relaxed">
+                    <% createResume.certifications.forEach(cert => { %>
+                        <li><%= cert %></li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="text-lg">No certifications available</p>
+            <% } %>
+        </div>
+
+    <!-- Projects Section -->
+<div class="mb-6">
+    <h2 class="text-2xl font-semibold border-b-4 border-gray-400 pb-2">Projects</h2>
+    <% if (createResume) { %>
+        <ul class="list-disc pl-6 text-gray-700 text-lg leading-relaxed">
+            <% if (createResume.project1_name) { %>
+                <li>
+                    <strong><%= createResume.project1_name %></strong> - <%= createResume.project1_description %> 
+                    (<a href="<%= createResume.project1_link %>" class="text-blue-600">View</a>)
+                </li>
+            <% } %>
+
+            <% if (createResume.project2_name) { %>
+                <li>
+                    <strong><%= createResume.project2_name %></strong> - <%= createResume.project2_description %> 
+                    (<a href="<%= createResume.project2_link %>" class="text-blue-600">View</a>)
+                </li>
+            <% } %>
+
+            <% if (createResume.project3_name) { %>
+                <li>
+                    <strong><%= createResume.project3_name %></strong> - <%= createResume.project3_description %> 
+                    (<a href="<%= createResume.project3_link %>" class="text-blue-600">View</a>)
+                </li>
+            <% } %>
+        </ul>
+    <% } else { %>
+        <p class="text-lg">No projects available</p>
+    <% } %>
+</div>
+
+
+        <!-- Hobbies -->
+        <div>
+            <h2 class="text-2xl font-semibold border-b-4 border-gray-400 pb-2">Interests & Hobbies</h2>
+                <ul class="list-disc pl-6 text-gray-700 text-lg leading-relaxed">
+                        <li><%= createResume.hobby %></li>
+                </ul>
+        </div>
+    </div>
+
+     <!-- Buttons for Print and Download -->
+     <div class="mt-6 text-center">
+        <button onclick="downloadJPG()" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 ml-4">Download as JPG</button>
+    </div>
+
+    <script>
+
+        function downloadJPG() {
+            const resumeElement = document.getElementById('resume');
+            html2canvas(resumeElement, { scale: 2 }).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/jpeg');
+                link.download = 'Resume.jpg';
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>

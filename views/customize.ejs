@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Yourself</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</style>
+</head>
+<body>
+   
+    <div class="p-10">
+      <a href="/templates" class="font-semibold bg-purple-400 hover:bg-purple-500 rounded-lg px-3 py-1">Go Back</a>
+        <h1 class="text-center font-bold text-2xl">Enter Your Details</h1>
+        <div class="w-full flex flex-col md:flex-row flex-wrap p-1 justify-center items-center">
+              <form action="/customize" method="post" enctype="multipart/form-data" class="w-full flex gap-5 flex-col py-10 flex-wrap text-purple-600">
+                <!-- User Details -->
+                <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                  <div class="flex flex-col md:flex-row gap-10 text-lg md:text-2xl flex-wrap w-full justify-between items-center">
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap"> 
+                      <label class="font-semibold text-purple-600" for="name">Name:</label>
+                      <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                             type="text" 
+                             name="name"
+                             placeholder="Enter your name">
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap"> 
+                      <label class="font-semibold text-purple-600" for="mobile">Mobile No:</label>
+                      <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                             type="tel" 
+                             name="mobile"
+                             placeholder="Enter your mobile number">
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap"> 
+                      <label class="font-semibold text-purple-600" for="email">Email:</label>
+                      <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                             type="email" 
+                             name="email"
+                             placeholder="Enter your email">
+                   </div>
+                </div>
+                </div>
+
+                <!-- Links -->
+                <div class="flex w-full flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap items-center w-full"> 
+                  <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                    <label class="font-semibold text-purple-600" for="website_name">Website Name:</label>
+                    <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                           type="text" 
+                           name="website_name"
+                           placeholder="Your website name">
+                  </div>
+                  <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                  <label class="text-purple-600 font-semibold" for="website">Website Link:</label>
+                  <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 md:w-auto" 
+                         type="url" 
+                         name="website"
+                         placeholder="Your website link">
+                  </div>
+
+                 </div>
+
+                 <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl gap-5 flex-wrap">
+                   <label class="font-semibold text-purple-600" for="socialmedia">Social Media Links:</label>
+                   <div class="flex flex-col md:flex-row gap-5 text-lg md:text-2xl flex-wrap w-full justify-between items-center">
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                       <label class="text-purple-500" for="github">GitHub</label>
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="url" 
+                              name="github"
+                              placeholder="Enter your GitHub link">
+                     </div>
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                       <label class="text-purple-500" for="linkedIn">LinkedIn</label>
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="url" 
+                              name="linkedIn"
+                              placeholder="Enter your LinkedIn link">
+                     </div>
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                       <label class="text-purple-500" for="gfg">GFG</label>
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="url" 
+                              name="gfg"
+                              placeholder="Enter your GFG link">
+                     </div>
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                       <label class="text-purple-500" for="instagram">Instagram</label>
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="url" 
+                              name="instagram"
+                              placeholder="Enter your Instagram link">
+                     </div>
+                   </div>
+                 </div>
+
+                  <!-- Objectives -->
+                   <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full"> 
+                    <label class="font-semibold text-purple-500" for="objectives">Objectives:</label>
+                    <textarea 
+                        class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full flex-1 resize-y max-h-24 min-h-12" 
+                        name="objectives" 
+                        rows="2" 
+                        placeholder="Enter your objectives"></textarea>
+                </div>  
+                <!-- Education -->
+                <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap"> 
+                  <label class="font-semibold text-purple-500">Education:</label>
+                  <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full justify-between items-center">
+                      <label class="text-purple-500">Graduation</label>
+                      <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                             type="text" 
+                             name="graduation_university" 
+                             placeholder="University/Board Name">
+                      <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                             type="text" 
+                             name="graduation_year" 
+                             placeholder="Year (Eg: 2020-2023)">
+                      <select class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              name="graduation_type">
+                          <option value="percentage">Percentage</option>
+                          <option value="cgpa">CGPA</option>
+                          <option value="grade">Grade</option>
+                      </select>
+                      <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                             type="text" 
+                             name="graduation_score" 
+                             placeholder="Score">
+                     </div>
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full">
+                      <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full justify-between items-center">
+                       <label class="text-purple-500">Intermediate</label>
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="text" 
+                              name="intermediate_university" 
+                              placeholder="University/Board Name">
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="text" 
+                              name="intermediate_year" 
+                              placeholder="Year (Eg: 2020)">
+                       <select class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                               name="intermediate_type">
+                           <option value="percentage">Percentage</option>
+                           <option value="grade">Grade</option>
+                       </select>
+                       <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                              type="text" 
+                              name="intermediate_score" 
+                              placeholder="Score">
+                      </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full"> 
+                  <label class="font-semibold text-purple-500 w-full" for="skills">Skills:</label>
+                   <div class="flex flex-col md:flex-row gap-5 text-lg md:text-2xl flex-wrap w-full">
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                      <label class="text-purple-500">Frontend</label>
+                      <textarea 
+                          class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full flex-1 resize-y max-h-24 min-h-12" 
+                          name="frontend_skills" 
+                          rows="2" 
+                          placeholder="Enter Frontend Skills"></textarea>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                      <label class="text-purple-500">Backend</label>
+                      <textarea 
+                          class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full flex-1 resize-y max-h-24 min-h-12" 
+                          name="backend_skills" 
+                          rows="2" 
+                          placeholder="Enter Backend Skills"></textarea>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                      <label class="text-purple-500">Language</label>
+                      <textarea 
+                          class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full flex-1 resize-y max-h-24 min-h-12" 
+                          name="language_skills" 
+                          rows="2" 
+                          placeholder="Eg: C, C++, Java, Python"></textarea>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                      <label class="text-purple-500">Other</label>
+                      <textarea 
+                          class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full flex-1 resize-y max-h-24 min-h-12" 
+                          name="other_skills" 
+                          rows="2" 
+                          placeholder="Eg: Excel, Photoshop"></textarea>
+                    </div>
+                   </div>
+                  </div>
+
+                  
+                     <!-- Project -->
+                     <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full"> 
+                       <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full">
+                         <label class="font-semibold text-purple-500" for="projects">Number of Projects:</label>
+                         <select class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                                 id="projectCount" 
+                                 name="project_count">
+                              <option value="">Select</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                            </select>
+                       </div>
+                           <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap">
+                             <div class="flex flex-col md:flex-row gap-5 text-lg md:text-2xl flex-wrap" id="projectInputs">
+                               <!-- Project inputs dynamically generated by JavaScript -->
+                             </div>
+                           </div>
+                       </div>
+                   </div>
+
+ 
+                   <!-- Hobby -->
+                   <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap items-center w-full"> 
+                    <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap ">
+                      <label class="font-semibold text-purple-500" for="hobby">Hobby:</label>
+                    <textarea 
+                        class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full flex-1 resize-y max-h-24 min-h-12" 
+                        name="hobby" 
+                        rows="2" 
+                        placeholder="1. Listen to music        2. Play games"></textarea>
+                    </div>
+                </div>
+
+                  <!-- user Image -->
+                  <div class="flex flex-col md:flex-row gap-3 text-lg md:text-2xl flex-wrap w-full"> 
+                    <label class="font-semibold text-purple-500" for="image">Upload Image:</label>
+                    <input class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                           type="file" 
+                           name="image" 
+                           accept="image/*"
+                           required>
+                  </div>
+
+                <!-- Submit Button -->
+                      <div class="flex justify-center items-center w-[100%]">
+                        <button type="submit" class="w-[30%] font-bold border-2 border-green-500 px-5 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white">Submit</button>
+                      </div>
+                  </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById("projectCount").addEventListener("change", function() {
+    const count = parseInt(this.value);
+    const container = document.getElementById("projectInputs");
+    container.innerHTML = ""; // Clear previous inputs
+
+    for (let i = 1; i <= count; i++) {
+        // Create a wrapper div for better structure
+        const projectDiv = document.createElement("div");
+        projectDiv.className = "mb-4"; // Add spacing between projects
+
+        // Generate input fields with consistent styling
+        projectDiv.innerHTML += `
+            <label for="project${i}_name" class="font-semibold text-purple-500 block mb-1">Project ${i} Name:</label>
+            <input 
+                id="project${i}_name" 
+                class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto resize-none mb-2" 
+                type="text" 
+                name="project${i}_name" 
+                placeholder="Enter project name"
+            >
+
+            <label for="project${i}_desc" class="font-semibold text-purple-500 block mb-1">Project ${i} Description:</label>
+            <textarea 
+                id="project${i}_desc"
+                class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300    rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto resize-y max-h-36 min-h-12" 
+                        name="project${i}_desc" 
+                        rows="2" 
+                        placeholder="Enter project description"></textarea>
+          
+            <label for="project${i}_link" class="font-semibold text-purple-500 block mb-1">Project ${i} Link:</label>
+            <input 
+                id="project${i}_link" 
+                class="text-purple-500 bg-purple-100 outline-none focus:border-purple-500 border-2 border-purple-300 rounded-md px-2 md:px-3 md:py-1 w-full md:w-auto" 
+                type="url" 
+                name="project${i}_link" 
+                placeholder="Enter project link"
+            >
+        `;
+
+        // Append the div to the container
+        container.appendChild(projectDiv);
+    }
+});
+
+  </script>
+
+</body>
+</html>

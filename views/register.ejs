@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS to remove number input spinner */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+    </style>
+    
+</head>
+<body>
+  
+    <div class="flex justify-center items-center h-screen w-full bg-zinc-50 px-10 py-20">
+      <div class="absolute top-0 right-0 p-10"><a href="/">Close</a></div>
+      <div class="shadow-md p-4 w-[60%] bg-gradient-to-r from-blue-800 to-purple-600 rounded-xl shadow-2xl overflow-hidden text-zinc-50">
+        <div class="mb-2"></div>
+        <h2 class="text-2xl font-bold leading-tight">
+          Sign up to create account
+        </h2>
+        <p class="mt-2 text-base text-gray-300">
+          Already have an account? <a class="text-purple-300 hover:underline" href="/login">Sign In</a>
+        </p>
+        <form class="mt-5" action="/register" method="post">
+          <div class="space-y-4">
+            <div>
+              <label class="text-base font-medium">
+                Your Name
+              </label>
+              <div class="mt-2">
+                <input
+                  placeholder="Full Name"
+                  type="text"
+                  class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="name"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <label class="text-base font-medium">
+                Email address
+              </label>
+              <div class="mt-2">
+                <input
+                  placeholder="Email"
+                  type="email"
+                  class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <label class="text-base font-medium">
+                  Password
+                </label>
+              </div>
+              <div class="mt-2">
+                <input
+                  placeholder="Password"
+                  type="password"
+                  class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="password"
+                  required
+                />
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <label class="text-base font-medium">
+                  Date of birth
+                </label>
+              </div>
+              <div class="mt-2">
+                <input
+                placeholder="01/01/2000"
+                type="text"
+                class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                name="age"
+                required
+              />
+              </div>
+            </div>
+            <div>
+                <% if (typeof message !== "undefined" && message) { %>
+                    <h1 class="text-red-500"><%= message %></h1>
+                <% } %>
+            </div>
+            <div>
+              <button
+                class="inline-flex w-full items-center justify-center rounded-md px-3.5 py-2.5 font-semibold leading-7 bg-purple-500 hover:bg-purple-700 shadow-lg text-white transition duration-200"
+                type="submit"
+              >
+                Create Account
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+</div>
+
+</body>
+</html>

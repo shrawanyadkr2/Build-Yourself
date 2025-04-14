@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Deloitte Resume",
+        "image": "https://i.ibb.co/s9Sd9kxs/Screenshot-2025-03-22-184331.png",
+        "demand": "high",
+        "color": "bg-green-600",
+        "type": "resume"
+    },
+    {
+        "id": 2,
+        "name": "Top Class Resume",
+        "image": "https://i.ibb.co/fYbz8ZLf/Screenshot-2025-03-22-191248.png",
+        "demand": "very high",
+        "color": "bg-red-600",
+        "type": "resume"
+    },
+    {
+        "id": 3,
+        "name": "College Assignment Templates",
+        "image": "https://example.com/images/college-assignment.jpg",
+        "demand": "medium",
+        "color": "bg-yellow-500",
+        "type": "collegeStaff"
+    },
+    {
+        "id": 4,
+        "name": "Practical Front Pages",
+        "image": "https://example.com/images/practical-front-page.jpg",
+        "demand": "high",
+        "color": "bg-green-600",
+        "type": "collegeStaff"
+    }
+]
